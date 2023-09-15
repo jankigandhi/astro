@@ -1,0 +1,61 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+import { hexToRgb, mix } from "../utils/hex-to-rgb.util";
+const fontFamily = "Matter, sans-serif";
+const fontSize = "16px";
+const lineHeight = "24px";
+const black = "#1c1c1c";
+const white = "#ffffff";
+const textColor = "var(--black)";
+const primaryColor = "#006763";
+const primaryColorRgb = `${hexToRgb(primaryColor)}`;
+const primaryColorLight = `${mix(primaryColor, "ffffff", 30)}`;
+const primaryColorLighter = `${mix(primaryColor, "ffffff", 15)}`;
+const primaryColorDark = `${mix(primaryColor, "000000", 80)}`;
+import '../scss/styles.scss';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<!-- <script>
+  import { computeCssVariables } from "../utils/css-vars.util";
+  const style = document.createElement("style");
+  style.id = "css-variables";
+  style.textContent = `:root {${computeCssVariables}}`;
+  document.head.appendChild(style);
+</script> -->
+
+<style is:global>
+  /* global css */
+</style>
+<style
+  define:vars={{
+    fontFamily,
+    fontSize,
+    lineHeight,
+    primaryColor,
+    textColor,
+    black,
+    white,
+    primaryColorRgb,
+    primaryColorLight,
+    primaryColorLighter,
+    primaryColorDark,
+  }}
+></style>
