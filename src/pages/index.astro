@@ -11,7 +11,22 @@ import Button from "../components/Button.astro";
   <main class="container">
     <!-- <GreetingCard />	
 	   <Card title='Welcome to Astro'  />	 -->
-    <ProductCard />
-    <Button />
+    <div class="flex">
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+    </div>
+    <div class="flex">
+      <Button />
+    </div>
   </main>
 </Layout>
+
+<style>
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+</style>
