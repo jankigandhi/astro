@@ -1,16 +1,25 @@
 ---
-
+import { Image } from "astro:assets";
+import productImg from "../../public/images/rectangle-35.png";
+import filledStarImg from "../../public/images/star-8.svg";
+import emptyStarImg from "../../public/images/star-12.svg";
+import deal from "../../public/images/group-3330.svg";
+import plus from "../../public/images/plus.svg";
+import wishlist from "../../public/images/vector.svg";
 ---
 
 <div class="product-card">
-  <img src="./images/Rectangle 35.png" alt="Rectangle 35" />
+  <!-- <div class="wishlist-icon">
+    <Image src={wishlist} alt="Rectangle 35" />
+  </div> -->
+  <Image src={productImg} alt="Rectangle 35" />
   <div class="rating-section">
     <div class="stars">
-      <img src="./images/Star 8.svg" alt="Star" />
-      <img src="./images/Star 8.svg" alt="Star" />
-      <img src="./images/Star 8.svg" alt="Star" />
-      <img src="./images/Star 8.svg" alt="Star" />
-      <img src="./images/Star 12.svg" alt="Star" />
+      <Image src={filledStarImg} alt="Star" />
+      <Image src={filledStarImg} alt="Star" />
+      <Image src={filledStarImg} alt="Star" />
+      <Image src={filledStarImg} alt="Star" />
+      <Image src={emptyStarImg} alt="Star" />
     </div>
     <div class="type">Hybrid</div>
   </div>
@@ -18,8 +27,19 @@
   <div class="deal-section">
     <div class="weight">48 mg</div>
     <div class="deal">
-      <img src="./images/Group 3330.svg" alt="deal" />
+      <Image src={deal} alt="deal" />
       <span class="deal-title">1 Deal avilable</span>
+    </div>
+  </div>
+  <div class="price-qty-section">
+    <div class="price-section">
+      <div class="current-price">$199.99</div>
+      <div class="original-price">$399.99</div>
+    </div>
+    <div class="qty-section">
+      <button class="qty-increment">
+        <Image src={plus} alt="deal" />
+      </button>
     </div>
   </div>
 </div>
@@ -68,21 +88,44 @@
     line-height: 14px;
   }
   .deal {
-    img {
-      width: 12px;
-      height: 12px;
-    }
-    /* span {
-      color: var(--primaryColor);
-      font-size: 10px;
-      font-weight: 400;
-      line-height: 14px;
-    } */
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
   }
   .deal-title {
     color: var(--primaryColor);
     font-size: 10px;
     font-weight: 400;
     line-height: 14px;
+  }
+  .price-qty-section {
+    display: flex;
+    gap: 45px;
+    /* justify-content: space-between; */
+    align-items: center;
+    margin-top: 10px;
+  }
+  .current-price {
+    color: var(--Red, #ef403d);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+  }
+  .original-price {
+    color: var(--Grey, #82868c);
+    font-size: 8px;
+    font-weight: 400;
+    line-height: 10px;
+    text-decoration: line-through;
+  }
+  .qty-increment {
+    padding: 5px 7px;
+    border: 0;
+    border-radius: 50%;
+    color: var(--White);
+    background-color: var(--primaryColor);
+  }
+  .qty-increment img {
+    margin-top: 2px;
   }
 </style>
