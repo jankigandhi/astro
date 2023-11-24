@@ -1,4 +1,9 @@
 ---
+interface Props {
+  title: string;
+  isPrimary?: boolean;
+  isSecondary?: boolean;
+}
 const { title, isPrimary, isSecondary } = Astro.props;
 ---
 
