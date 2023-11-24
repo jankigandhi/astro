@@ -5,62 +5,84 @@ import filledStarImg from "../../public/images/star-8.svg";
 import emptyStarImg from "../../public/images/star-12.svg";
 import deal from "../../public/images/group-3330.svg";
 import plus from "../../public/images/plus.svg";
-// import wishlist from "../../public/images/vector.svg";
+import wishlist from "../../public/images/vector.svg";
 ---
 
-<div class="product-card">
-  <!-- <div class="wishlist-icon">
-    <Image src={wishlist} alt="Rectangle 35" />
-  </div> -->
+<div class="product-card flex">
+  <div class="wishlist-section">
+    <div class="wishlist-icon">
+      <Image src={wishlist} alt="Rectangle 35" />
+    </div>
+  </div>
   <Image src={productImg} alt="Rectangle 35" />
-  <div class="rating-section">
-    <div class="stars">
-      <Image src={filledStarImg} alt="Star" />
-      <Image src={filledStarImg} alt="Star" />
-      <Image src={filledStarImg} alt="Star" />
-      <Image src={filledStarImg} alt="Star" />
-      <Image src={emptyStarImg} alt="Star" />
+  <div class="detail-section">
+    <div class="rating-section flex">
+      <div class="stars">
+        <Image src={filledStarImg} alt="Star" />
+        <Image src={filledStarImg} alt="Star" />
+        <Image src={filledStarImg} alt="Star" />
+        <Image src={filledStarImg} alt="Star" />
+        <Image src={emptyStarImg} alt="Star" />
+      </div>
+      <span class="type">Hybrid</span>
     </div>
-    <div class="type">Hybrid</div>
-  </div>
-  <div class="product-name">Restore Lemon Ginger Drink Mix 2:1 CBD:THC</div>
-  <div class="deal-section">
-    <div class="weight">48 mg</div>
-    <div class="deal">
-      <Image src={deal} alt="deal" />
-      <span class="deal-title">1 Deal avilable</span>
+    <span class="product-name">Restore Lemon Ginger Drink Mix 2:1 CBD:THC</span>
+    <div class="deal-section flex">
+      <div class="weight">48 mg</div>
+      <div class="deal flex">
+        <Image src={deal} alt="deal" />
+        <span class="deal-title">1 Deal avilable</span>
+      </div>
     </div>
-  </div>
-  <div class="price-qty-section">
-    <div class="price-section">
-      <div class="current-price">$199.99</div>
-      <div class="original-price">$399.99</div>
-    </div>
-    <div class="qty-section">
-      <button class="qty-increment">
-        <Image src={plus} alt="deal" />
-      </button>
+    <div class="price-qty-section flex">
+      <div class="price-section">
+        <div class="current-price">$199.99</div>
+        <div class="original-price">$399.99</div>
+      </div>
+      <div class="qty-section">
+        <button class="qty-increment">
+          <Image src={plus} alt="deal" />
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
 <style>
-  .product-card {
+  .flex {
     display: flex;
-    width: 161.5px;
-    height: 314px;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+  }
+  .product-card {
+    position: relative;
+    width: 200px;
+    height: 322px;
+    flex-direction: column;
     border-radius: 8px;
     background: var(--White, #fff);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
     margin-block: 20px;
   }
+  .wishlist-section {
+    width: 27.914px;
+    height: 28px;
+    border: 1px solid #82868c;
+    border-radius: 50%;
+    position: absolute;
+    right: 6px;
+    top: 6px;
+  }
+  .wishlist-icon {
+    margin-top: 4px;
+    text-align: center;
+  }
+  .detail-section {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
   .rating-section {
-    display: flex;
-    gap: 25px;
-    /* justify-content: space-between; */
-    align-items: center;
+    justify-content: space-between;
   }
   .type {
     color: #de8d73;
@@ -77,9 +99,7 @@ import plus from "../../public/images/plus.svg";
     text-align: center;
   }
   .deal-section {
-    display: flex;
-    gap: 30px;
-    align-items: center;
+    justify-content: space-between;
   }
   .weight {
     color: #82868c;
@@ -88,8 +108,6 @@ import plus from "../../public/images/plus.svg";
     line-height: 14px;
   }
   .deal {
-    display: flex;
-    align-items: center;
     margin-top: 2px;
   }
   .deal-title {
@@ -99,11 +117,8 @@ import plus from "../../public/images/plus.svg";
     line-height: 14px;
   }
   .price-qty-section {
-    display: flex;
-    gap: 45px;
-    /* justify-content: space-between; */
-    align-items: center;
-    margin-top: 10px;
+    justify-content: space-between;
+    margin-block: 10px;
   }
   .current-price {
     color: var(--Red, #ef403d);
