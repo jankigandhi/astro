@@ -1,9 +1,4 @@
 ---
-interface Props {
-  title: string;
-  isPrimary?: boolean;
-  isSecondary?: boolean;
-}
 const { title, isPrimary, isSecondary } = Astro.props;
 ---
 
@@ -13,28 +8,20 @@ const { title, isPrimary, isSecondary } = Astro.props;
 
 <style>
   .primaryBtn {
-    display: flex;
     padding: 12px 24px;
-    justify-content: center;
-    align-items: center;
     border: 0;
     border-radius: 8px;
     background: var(--primaryColor);
     color: var(--white);
-    text-align: center;
     font-size: 18px;
     font-weight: 600;
     margin-block: 10px;
   }
   .secondaryBtn {
-    display: flex;
     padding: 12px 24px;
-    justify-content: center;
-    align-items: center;
     border-radius: 8px;
     border: 1px solid #82868c;
     color: #82868c;
-    text-align: center;
     font-size: 18px;
     font-weight: 600;
     margin-block: 10px;
