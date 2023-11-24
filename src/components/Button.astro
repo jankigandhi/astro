@@ -1,12 +1,13 @@
 ---
-// import styles from "./button.module.scss";
+const { title, isPrimary, isSecondary } = Astro.props;
 ---
 
-<button class="primary-button">Button</button>
-<button class="secondary-button">Button</button>
+<button class:list={{ primaryBtn: isPrimary, secondaryBtn: isSecondary }}>
+  {title}
+</button>
 
 <style>
-  .primary-button {
+  .primaryBtn {
     display: flex;
     padding: 12px 24px;
     justify-content: center;
@@ -20,7 +21,7 @@
     font-weight: 600;
     margin-block: 10px;
   }
-  .secondary-button {
+  .secondaryBtn {
     display: flex;
     padding: 12px 24px;
     justify-content: center;

@@ -9,13 +9,13 @@ import wishlist from "../../public/images/vector.svg";
 ---
 
 <div class="product-card flex">
-  <div class="wishlist-section">
+  <div class="upper-section">
     <div class="wishlist-icon">
-      <Image src={wishlist} alt="Rectangle 35" />
+      <Image src={wishlist} alt="Wishlist" />
     </div>
   </div>
-  <Image src={productImg} alt="Rectangle 35" />
-  <div class="detail-section">
+  <Image src={productImg} alt="Product Image" />
+  <div class="lower-section">
     <div class="rating-section flex">
       <div class="stars">
         <Image src={filledStarImg} alt="Star" />
@@ -30,7 +30,7 @@ import wishlist from "../../public/images/vector.svg";
     <div class="deal-section flex">
       <div class="weight">48 mg</div>
       <div class="deal flex">
-        <Image src={deal} alt="deal" />
+        <Image src={deal} alt="Deal" />
         <span class="deal-title">1 Deal avilable</span>
       </div>
     </div>
@@ -41,14 +41,14 @@ import wishlist from "../../public/images/vector.svg";
       </div>
       <div class="qty-section">
         <button class="qty-increment">
-          <Image src={plus} alt="deal" />
+          <Image src={plus} alt="Quantity" />
         </button>
       </div>
     </div>
   </div>
 </div>
 
-<style>
+<style lang="scss">
   .flex {
     display: flex;
     justify-content: center;
@@ -64,7 +64,7 @@ import wishlist from "../../public/images/vector.svg";
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
     margin-block: 20px;
   }
-  .wishlist-section {
+  .upper-section {
     width: 27.914px;
     height: 28px;
     border: 1px solid #82868c;
@@ -77,7 +77,7 @@ import wishlist from "../../public/images/vector.svg";
     margin-top: 4px;
     text-align: center;
   }
-  .detail-section {
+  .lower-section {
     margin-left: 10px;
     margin-right: 10px;
   }
@@ -139,8 +139,8 @@ import wishlist from "../../public/images/vector.svg";
     border-radius: 50%;
     color: var(--White);
     background-color: var(--primaryColor);
-  }
-  .qty-increment img {
-    margin-top: 2px;
+    img {
+      margin-top: 2px;
+    }
   }
 </style>

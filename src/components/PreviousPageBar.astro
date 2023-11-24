@@ -4,30 +4,30 @@ import arrow from "../../public/images/back-arrow.svg";
 ---
 
 <div class="previous-page-bar">
-  <Image src={arrow} alt="deal" />
+  <Image src={arrow} alt="Go Back" />
   <span>Current page</span>
 </div>
 
-<style>
+<style lang="scss">
   .previous-page-bar {
     width: 375px;
     height: 55px;
     padding: 16px 0px;
     display: flex;
     align-items: center;
+    justify-content: center;
     background: var(--white);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
-  }
-
-  .previous-page-bar img {
-    margin-left: 10px;
-  }
-  .previous-page-bar span {
-    color: var(--black);
-    /* text-align: center; */
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 22px;
-    margin: 0 auto;
+    img {
+      margin-left: 10px;
+    }
+    span {
+      color: var(--black);
+      /* text-align: center; */
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 22px;
+      margin: 0 auto;
+    }
   }
 </style>
