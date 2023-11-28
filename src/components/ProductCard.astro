@@ -1,8 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import productImg from "../../public/images/rectangle-35.png";
-import filledStarImg from "../../public/images/star-8.svg";
-import emptyStarImg from "../../public/images/star-12.svg";
+import emptyStarImg from "../../public/images/star.svg";
 import deal from "../../public/images/group-3330.svg";
 import plus from "../../public/images/plus.svg";
 import wishlist from "../../public/images/vector.svg";
@@ -11,18 +10,18 @@ import wishlist from "../../public/images/vector.svg";
 <div class="product-card flex">
   <div class="upper-section">
     <div class="wishlist-icon">
-      <Image src={wishlist} alt="Wishlist" />
+      <Image src={wishlist} alt="Wishlist" class="wishlist" id="btnWishlist" />
     </div>
   </div>
   <Image src={productImg} alt="Product Image" />
   <div class="lower-section">
     <div class="rating-section flex">
-      <div class="stars">
-        <Image src={filledStarImg} alt="Star" />
-        <Image src={filledStarImg} alt="Star" />
-        <Image src={filledStarImg} alt="Star" />
-        <Image src={filledStarImg} alt="Star" />
-        <Image src={emptyStarImg} alt="Star" />
+      <div class="rating">
+        {
+          [...Array(5)].map((_, index) => (
+            <Image src={emptyStarImg} alt="Star" class="star" />
+          ))
+        }
       </div>
       <span class="type">Hybrid</span>
     </div>
@@ -40,8 +39,9 @@ import wishlist from "../../public/images/vector.svg";
         <div class="original-price">$399.99</div>
       </div>
       <div class="qty-section">
-        <button class="qty-increment">
-          <Image src={plus} alt="Quantity" />
+        <button class="qty-increment" id="btnPlus">
+          <div class="qty" id="incrementText"></div>
+          <Image src={plus} alt="Quantity" class="plus" id="btnIncrement" />
         </button>
       </div>
     </div>
@@ -60,7 +60,7 @@ import wishlist from "../../public/images/vector.svg";
     height: 322px;
     flex-direction: column;
     border-radius: 8px;
-    background: var(--White, #fff);
+    background: var(--white);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
     margin-block: 20px;
   }
@@ -76,6 +76,12 @@ import wishlist from "../../public/images/vector.svg";
   .wishlist-icon {
     margin-top: 4px;
     text-align: center;
+    .wishlist {
+      cursor: pointer;
+    }
+  }
+  .filled-wishlist {
+    background-image: url("./images/filled-vector.svg");
   }
   .lower-section {
     margin-left: 10px;
@@ -84,9 +90,14 @@ import wishlist from "../../public/images/vector.svg";
   .rating-section {
     justify-content: space-between;
   }
+  .rating {
+    cursor: pointer;
+  }
+  .filled-star {
+    content: url("./images/filled-star.svg");
+  }
   .type {
     color: #de8d73;
-    text-align: right;
     font-size: 12px;
     font-weight: 400;
     line-height: 18px;
@@ -96,7 +107,6 @@ import wishlist from "../../public/images/vector.svg";
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
-    text-align: center;
   }
   .deal-section {
     justify-content: space-between;
@@ -121,13 +131,13 @@ import wishlist from "../../public/images/vector.svg";
     margin-block: 10px;
   }
   .current-price {
-    color: var(--Red, #ef403d);
+    color: #ef403d;
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
   }
   .original-price {
-    color: var(--Grey, #82868c);
+    color: #82868c;
     font-size: 8px;
     font-weight: 400;
     line-height: 10px;
@@ -137,10 +147,83 @@ import wishlist from "../../public/images/vector.svg";
     padding: 5px 7px;
     border: 0;
     border-radius: 50%;
-    color: var(--White);
+    color: var(--white);
     background-color: var(--primaryColor);
-    img {
+    .plus {
       margin-top: 2px;
+    }
+    .qty {
+      display: none;
+    }
+  }
+  .increment-qty {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: var(--white);
+    height: 38px;
+    border-radius: 26px;
+    justify-content: space-around;
+    width: 80px;
+    .plus {
+      margin-top: 0px;
+    }
+    .qty {
+      display: block;
+      font-size: 14px;
+    }
+    .qty::after {
+      content: "x";
+      font-size: 12px;
+      margin-left: 2px;
     }
   }
 </style>
+<script>
+  // -------- Wishlist --------
+  let AddToWishlist = () => {
+    const wishlistBtn = document.querySelector(".wishlist");
+    wishlistBtn?.classList.toggle("filled-wishlist");
+  };
+  document
+    .getElementById("btnWishlist")
+    ?.addEventListener("click", AddToWishlist);
+
+  // -------- Rating -----------
+  let allStar = document.querySelectorAll(".rating .star");
+  allStar.forEach((star, idx) => {
+    star.addEventListener("click", () => {
+      allStar.forEach((i, idx1) => {
+        idx >= idx1
+          ? i.classList.add("filled-star")
+          : i.classList.remove("filled-star");
+      });
+    });
+  });
+
+  // -------- Quantity Increment Button --------
+
+  //---- Button Expansion ----
+  let IncrementQty = () => {
+    const btn = document.querySelector(".qty-increment");
+    btn?.classList.add("increment-qty");
+  };
+  document.getElementById("btnPlus")?.addEventListener("click", IncrementQty);
+
+  //---- Quantity Increment  ----
+  let value = 0;
+  let incrementBtn: HTMLElement | null;
+  let counterValue: HTMLElement | null;
+
+  counterValue = document.getElementById("incrementText");
+  incrementBtn = document.getElementById("btnIncrement");
+
+  if (counterValue && incrementBtn) {
+    incrementBtn.addEventListener("click", () => {
+      value++;
+      if (counterValue) {
+        counterValue.innerHTML = value.toString();
+      }
+    });
+  }
+</script>
